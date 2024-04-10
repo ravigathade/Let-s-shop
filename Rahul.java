@@ -31,9 +31,7 @@ public class Rahul {
 
 			List<WebElement> productList = driver.findElements(By.cssSelector(".mb-3"));
 
-			WebElement pro = productList.stream()
-					.filter(p -> p.findElement(By.cssSelector("b")).getText().equalsIgnoreCase(productName)).findFirst()
-					.orElse(null);
+			WebElement pro = productList.stream().filter(p -> p.findElement(By.cssSelector("b")).getText().equalsIgnoreCase(productName)).findFirst().orElse(null);
 			System.out.println(pro.getText());
 
 			pro.findElement(By.cssSelector(".card-body button:last-of-type")).click(); // for finding the element we go from
@@ -48,7 +46,7 @@ public class Rahul {
 			// ng-animating class= 'ng-tns-c31-0 ng-star-inserted'
 			
 			//clicking on cart
-            driver.findElement(By.cssSelector("[routerlink*='cart']")).click();
+                        driver.findElement(By.cssSelector("[routerlink*='cart']")).click();
 
 			System.out.println(driver.findElement(By.cssSelector("[routerlink*='cart']")).getText() + " " + "button clicked");
 			Thread.sleep(1000);
@@ -57,7 +55,7 @@ public class Rahul {
 			List<WebElement> cartProducts = driver.findElements(By.cssSelector(".cartSection h3"));
 			cartProducts.forEach(System.out::println);
 			
-		    Boolean match = cartProducts.stream().anyMatch(cartProduct -> cartProduct.getText().equalsIgnoreCase(productName));
+		        Boolean match = cartProducts.stream().anyMatch(cartProduct -> cartProduct.getText().equalsIgnoreCase(productName));
 			Assert.assertTrue(match);
 			System.out.println(match);
 			
@@ -66,7 +64,7 @@ public class Rahul {
 			Actions a = new Actions(driver);
 			a.sendKeys(driver.findElement(By.cssSelector("[placeholder='Select Country']")), "India").build().perform();
 		
-			//	Thread.sleep(2000);
+			//Thread.sleep(2000);
 			//or
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//body//app-root//button[2]")));
 			driver.findElement(By.xpath("//body//app-root//button[2]")).click();
